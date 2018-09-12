@@ -1,6 +1,6 @@
 # Fortune Plugin
 
-The **Fortune** Plugin is for [Grav CMS](http://github.com/getgrav/grav). It will select a random quote from a folder containing [traditional "fortune" files](https://en.wikipedia.org/wiki/Fortune_(Unix)). There's [a demo](https://www.perlkonig.com//demos/fortune) on my personal website.
+The **Fortune** Plugin is for [Grav CMS](http://github.com/getgrav/grav). It will select a random quote from a folder containing [traditional "fortune" files](https://en.wikipedia.org/wiki/Fortune_(Unix)). There's [a demo](https://www.perlkonig.com/demos/fortune) on my personal website.
 
 ## Installation
 
@@ -72,7 +72,7 @@ You can provide a single file name or point to a folder, in which case it will i
 
 ### Inserting Into Pages
 
-The plugin exports a global Twig variable `fortune`. Simply insert it wherever you want. Here's what appears on my demo page, for example:
+The plugin exports a global Twig variable `fortune`. Simply insert it wherever you want. Here's what appears on [my demo page](https://www.perlkonig.com/demos/fortune), for example:
 
 ```markdown
 twig_first: true
