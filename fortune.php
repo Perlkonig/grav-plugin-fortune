@@ -3,6 +3,7 @@ namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
+require_once(__DIR__ . '/vendor/fortune.php');
 
 /**
  * Class FortunePlugin
@@ -39,7 +40,7 @@ class FortunePlugin extends Plugin
 
         // Enable the main event we are interested in
         $this->enable([
-            'onPageContentRaw' => ['onPageContentRaw', 0]
+            'onPagesInitialized' => ['onPagesInitialized', 0]
         ]);
     }
 
@@ -49,15 +50,28 @@ class FortunePlugin extends Plugin
      *
      * @param Event $e
      */
-    public function onPageContentRaw(Event $e)
+    public function onPagesInitialized(Event $e)
     {
-        // Get a variable from the plugin configuration
-        $text = $this->grav['config']->get('plugins.fortune.text_var');
+        $config = $this->grav['config'];
+        $fn = $this->resolveFolder($config->get('plugins.fortune.data'));
+        if ( (! is_null($fn)) && (is_dir($fn)) )
+        {
+            $f = new \Fortune;
+            $fortune = $f->quoteFromDir($fn.'/');
+            $this->grav['twig']->twig_vars['fortune'] = $fortune;
+        }
+    }
 
-        // Get the current raw content
-        $content = $e['page']->getRawContent();
-
-        // Prepend the output with the custom text and set back on the page
-        $e['page']->setRawContent($text . "\n\n" . $content);
+    private function resolveFolder($fn)
+    {
+        if (strpos($fn, '://') !== false ){
+            $path = $this->grav['locator']->findResource($fn, true);
+        } else {
+            $path = $this->grav['page']->path() . DS . $fn;
+        }
+        if (file_exists($path)) {
+            return $path;
+        }
+        return null;        
     }
 }

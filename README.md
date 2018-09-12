@@ -1,8 +1,6 @@
 # Fortune Plugin
 
-**This README.md file should be modified to describe the features, installation, configuration, and general usage of this plugin.**
-
-The **Fortune** Plugin is for [Grav CMS](http://github.com/getgrav/grav). Select a random quote from a properly formatted "fortune" file
+The **Fortune** Plugin is for [Grav CMS](http://github.com/getgrav/grav). It will select a random quote from a folder containing [traditional "fortune" files](https://en.wikipedia.org/wiki/Fortune_(Unix)). There's [a demo](https://www.perlkonig.com//demos/fortune) on my personal website.
 
 ## Installation
 
@@ -28,7 +26,7 @@ You should now have all the plugin files under
 
 ### Admin Plugin
 
-If you use the admin plugin, you can install directly through the admin plugin by browsing the `Plugins` tab and clicking on the `Add` button.
+If you use the admin plugin, you can install directly through the admin plugin by browsing the `Plugins` tab and clicking on the `Add` button. I personally don't use the admin plugin, and I don't know how incorporate things like the command-line interface into it. Pull requests are warmly welcomed.
 
 ## Configuration
 
@@ -38,19 +36,62 @@ Here is the default configuration and an explanation of available options:
 
 ```yaml
 enabled: true
+data: 'user://data/fortunes'
 ```
 
 Note that if you use the admin plugin, a file with your configuration, and named fortune.yaml will be saved in the `user/config/plugins/` folder once the configuration is saved in the admin.
 
+* `enabled`: If set to false, the plugin will be disabled and won't execute.
+* `data`: This is a *folder* containing as many fortune files as you want. By default it assumes you will create a `fortunes` folder under your `user/data` folder. But you can point elsewhere if you wish.
+
 ## Usage
 
-**Describe how to use the plugin.**
+### Adding & Indexing Fortunes
+
+Fortune files are actually two files:
+
+* The first is a plain text file (often without an extension) that contains multi-line quotes separated by lines containing only a percent symbol (`%`).
+
+  ```
+  Angels are very good at math. That's why they call them arc-angels.
+    -- Steven Novella (The Skeptics Guide to the Universe)
+  %
+  There is no material safety data sheet for astatine. If there were, it would just be the word "NO" scrawled over and over in charred blood.
+    -- Randall Munroe, "What If?"
+  ```
+
+* The second is a binary index file with the same name as the text file and a `.dat` extension.
+
+There is a command-line interface for this plugin that will generate these `.dat` files for you. From the root folder of your Grav installation, type the following:
+
+```bash
+bin/plugin fortune index path/to/files
+```
+
+You can provide a single file name or point to a folder, in which case it will index (or reindex) all files in that folder (*not* recursively). This folder should only contain the text files and any pre-existing `.dat` files.
+
+### Inserting Into Pages
+
+The plugin exports a global Twig variable `fortune`. Simply insert it wherever you want. Here's what appears on my demo page, for example:
+
+```markdown
+twig_first: true
+process:
+    twig: true
+never_cache_twig: true
+
+---
+
+You open the fortune cookie and find the following:
+
+{{ fortune }}
+```
+
+You'll want `never_cache_twig` set to true if you want the quote to continually change. Otherwise the quote will get cached and not change.
+
+If you have any problems, let me know!
 
 ## Credits
 
-**Did you incorporate third-party code? Want to thank somebody?**
-
-## To Do
-
-- [ ] Future plans, if any
+This plugin relies on [a library created by Alexandre Passant](http://www.aasted.org/quote/). Many thanks!
 

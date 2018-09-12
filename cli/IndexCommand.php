@@ -11,7 +11,7 @@ require_once(__DIR__ . '/../vendor/fortune.php');
  *
  * @package Grav\Plugin\Console
  */
-class ReindexCommand extends ConsoleCommand
+class IndexCommand extends ConsoleCommand
 {
     /**
      * @var array
@@ -24,14 +24,14 @@ class ReindexCommand extends ConsoleCommand
     protected function configure()
     {
         $this
-            ->setName("reindex")
-            ->setDescription("Reindexes specific 'fortune' files or a folder of such files.")
+            ->setName("index")
+            ->setDescription("Indexes specific 'fortune' files or a folder of such files.")
             ->addArgument(
                 'name',
                 InputArgument::REQUIRED,
                 'The file or folder to be indexed.'
             )
-            ->setHelp('The <info>reindex</info> command generates the necessary ".dat" files from properly formatted fortune files or a whole folder of such files.')
+            ->setHelp('The <info>index</info> command generates the necessary ".dat" files from properly formatted fortune files or a whole folder of such files.')
         ;
     }
 
