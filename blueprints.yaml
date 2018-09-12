@@ -1,6 +1,6 @@
 name: Fortune
 version: 1.0.0
-description: Select a random quote from a properly formatted "fortune" file
+description: Select a random quote from a collection of properly formatted "fortune" files
 icon: book
 author:
   name: Aaron Dalton
