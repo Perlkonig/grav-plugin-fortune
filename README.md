@@ -93,5 +93,5 @@ If you have any problems, let me know!
 
 ## Credits
 
-This plugin relies on [a library created by Alexandre Passant](http://www.aasted.org/quote/). Many thanks!
+This plugin relies on [a library created by Henrik Aasted Sorensen](http://www.aasted.org/quote/). Many thanks!
 
