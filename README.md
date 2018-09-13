@@ -87,7 +87,7 @@ You open the fortune cookie and find the following:
 {{ fortune }}
 ```
 
-You'll want `never_cache_twig` set to true if you want the quote to continually change. Otherwise the quote will get cached and not change.
+If you use it in a page, you'll want `never_cache_twig` set to true if you want the quote to continually change. Otherwise the quote will get cached and not change. 
 
 If you have any problems, let me know!
 
