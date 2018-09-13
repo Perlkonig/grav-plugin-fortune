@@ -26,7 +26,7 @@ You should now have all the plugin files under
 
 ### Admin Plugin
 
-If you use the admin plugin, you can install directly through the admin plugin by browsing the `Plugins` tab and clicking on the `Add` button. I personally don't use the admin plugin, and I don't know how incorporate things like the command-line interface into it. Pull requests are warmly welcomed.
+If you use the admin plugin, you can install directly through the admin plugin by browsing the `Plugins` tab and clicking on the `Add` button. I personally don't use the admin plugin, and I don't know how to incorporate things like the command-line interface into it. Pull requests are warmly welcomed.
 
 ## Configuration
 
