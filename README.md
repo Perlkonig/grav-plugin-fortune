@@ -1,5 +1,7 @@
 # Fortune Plugin
 
+***Abandonment Notice:** I'm afraid I simply don't have the time to maintain my Grav themes and plugins. Those interested in taking over should refer to the ["Abandoned Resource Protocol"](https://learn.getgrav.org/17/advanced/grav-development#abandoned-resource-protoc). Feel free to fork and replace. So long, and thanks for all the fish.*
+
 The **Fortune** Plugin is for [Grav CMS](http://github.com/getgrav/grav). It will select a random quote from a folder containing [traditional "fortune" files](https://en.wikipedia.org/wiki/Fortune_(Unix)). There's [a demo](https://www.perlkonig.com/demos/fortune) on my personal website.
 
 ## Installation
